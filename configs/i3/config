@@ -1,0 +1,28 @@
+# i3 config minimal (perso)
+set $mod Mod4
+set $term kitty  # change en urxvt si tu préfères
+
+# Résolution / sortie écran (adapte 'eDP-1' -> xrandr)
+exec --no-startup-id xrandr --output eDP-1 --auto
+
+# Compositeur + fond d'écran (adapte le chemin)
+exec --no-startup-id picom --experimental-backends
+exec --no-startup-id feh --bg-scale --bg-fill ~/Images/wallpaper.jpg
+exec --no-startup-id nm-applet
+
+# Gaps / bordures
+gaps inner 10
+gaps outer 5
+
+default_border pixel 1
+default_floating_border pixel 1
+
+# Raccourcis
+bindsym $mod+Return exec $term
+bindsym $mod+d exec dmenu_run
+
+# Barre de statut (si i3blocks installé)
+bar {
+  status_command i3blocks
+  tray_output primary
+}
